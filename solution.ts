@@ -31,16 +31,38 @@ class Person {
 }
 
 // Problem Number - 4
-interface Book {
+function filterByRating(arr: { title: string; rating: number }[]): {
   title: string;
   rating: number;
+}[] {
+  return arr.filter((item) => {
+    return item.rating >= 4;
+  });
 }
 
-function filterByRating(arr : Book[]) : Book[] {
-    return arr.filter((item) => {
-        return item.rating >= 4;
-    });
+// Problem Number - 5
+type User = {
+  id: number;
+  name: string;
+  email: string;
+  isActive: boolean;
+};
+
+function filterActiveUsers(arr: User[]): User[] {
+  return arr.filter((item) => item.isActive === true);
 }
 
+// problem Number -  6
 
-
+interface Book {
+  title: string;
+  author: string;
+  publishedYear: number;
+  isAvailable: boolean;
+}
+function printBookDetails(book: Book) {
+  console.log(`Title: ${book.title}, Author: ${book.author}, Published: ${
+    book.publishedYear
+  }, Available:${book.isAvailable ? "Yes" : "No"}
+`);
+}
