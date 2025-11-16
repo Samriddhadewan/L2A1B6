@@ -1,4 +1,3 @@
-// Problem Number - 1
 function formatValue(
   arg: number | string | boolean
 ): number | string | boolean {
@@ -11,12 +10,14 @@ function formatValue(
   }
 }
 
-//Problem Number - 2
 function getLength(arg: string | any[]): number {
-  return arg.length;
+  if (Array.isArray(arg)) {
+    return arg.length;
+  } else {
+    return arg.length;
+  }
 }
 
-// Problem Number - 3
 class Person {
   name: string;
   age: number;
@@ -24,13 +25,11 @@ class Person {
     this.name = name;
     this.age = age;
   }
-
   getDetails() {
     return `Name: ${this.name}, Age:${this.age}`;
   }
 }
 
-// Problem Number - 4
 function filterByRating(arr: { title: string; rating: number }[]): {
   title: string;
   rating: number;
@@ -40,7 +39,6 @@ function filterByRating(arr: { title: string; rating: number }[]): {
   });
 }
 
-// Problem Number - 5
 type User = {
   id: number;
   name: string;
@@ -51,8 +49,6 @@ type User = {
 function filterActiveUsers(arr: User[]): User[] {
   return arr.filter((item) => item.isActive === true);
 }
-
-// problem Number -  6
 
 interface Book {
   title: string;
@@ -65,4 +61,38 @@ function printBookDetails(book: Book) {
     book.publishedYear
   }, Available:${book.isAvailable ? "Yes" : "No"}
 `);
+}
+
+function getUniqueValues<X>(arr1: X[], arr2: X[]): X[] {
+  let uniqueArr: X[] = [];
+  for (let i = 0; i < arr1.length; i++) {
+    if (!uniqueArr.includes(arr1[i])) {
+      uniqueArr.push(arr1[i]);
+    }
+  }
+  for (let i = 0; i < arr2.length; i++) {
+    if (!uniqueArr.includes(arr2[i])) {
+      uniqueArr.push(arr2[i]);
+    }
+  }
+  return uniqueArr;
+}
+
+interface Product {
+  name: string;
+  price: number;
+  quantity: number;
+  discount?: number;
+}
+
+function calculateTotalPrice(arr: Product[]): number {
+  const totalPrice = arr.reduce((sum, item) => {
+    let total = item.price * item.quantity;
+    if (item.discount) {
+      total = total - total * (item.discount / 100);
+    }
+    return sum + total;
+  }, 0);
+
+  return totalPrice;
 }
