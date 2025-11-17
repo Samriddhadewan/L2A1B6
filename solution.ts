@@ -66,12 +66,26 @@ function printBookDetails(book: Book) {
 function getUniqueValues<X>(arr1: X[], arr2: X[]): X[] {
   let uniqueArr: X[] = [];
   for (let i = 0; i < arr1.length; i++) {
-    if (!uniqueArr.includes(arr1[i])) {
+    let found = false;
+    for (let j = 0; j < uniqueArr.length; j++) {
+      if (uniqueArr[j] === arr1[i]) {
+        found = true;
+        break;
+      }
+    }
+    if (!found) {
       uniqueArr.push(arr1[i]);
     }
   }
   for (let i = 0; i < arr2.length; i++) {
-    if (!uniqueArr.includes(arr2[i])) {
+    let found = false;
+    for (let j = 0; j < uniqueArr.length; j++) {
+      if (uniqueArr[j] === arr2[i]) {
+        found = true;
+        break;
+      }
+    }
+    if (!found) {
       uniqueArr.push(arr2[i]);
     }
   }
